@@ -37,6 +37,3 @@ async def on_message(message):
     await stonk.handle_help(message)
   else:
     await stonk.handle_stonk(symbol, message)
-
-
-client.run(stonk_bot_token)
