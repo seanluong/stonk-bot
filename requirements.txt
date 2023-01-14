@@ -6,7 +6,7 @@ attrs @ https://files.pythonhosted.org/packages/f2/bc/d817287d1aa01878af07c19505
 beautifulsoup4 @ https://files.pythonhosted.org/packages/9c/d8/909c4089dbe4ade9f9705f143c9f13f065049a9d5e7d34c828aefdd0a97c/beautifulsoup4-4.11.1-py3-none-any.whl#sha256=58d5c3d29f5a36ffeb94f02f0d786cd53014cf9b3b3951d42e0080d8a9498d30
 CacheControl==0.12.11
 cachy==0.3.0
-certifi==2022.9.24
+certifi==2022.12.7
 cffi==1.15.1
 charset-normalizer==2.1.1
 cleo==0.8.1
