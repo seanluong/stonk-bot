@@ -13,7 +13,8 @@ def close_price(data):
 def fetch_price_data(symbol):
   ticker = yf.Ticker(symbol)
   data = ticker.history(period='7d')
-  return data
+  info = ticker.info
+  return data, info
 
 async def handle_stonk(symbol, message):
   if symbol is None:
@@ -21,10 +22,11 @@ async def handle_stonk(symbol, message):
     return
 
   try:
-    data = fetch_price_data(symbol)
+    data, info = fetch_price_data(symbol)
     price = close_price(data)
     growth = growth_rate(data)
-    await message.reply("{}: {} {}".format(symbol, format_price(price), format_growth_rate(growth)))
+    name = info["shortName"]
+    await message.reply("{} ({}): {} {}".format(symbol, name, format_price(price), format_growth_rate(growth)))
   except Exception as error:
     print(error)
     await message.reply("Cannot get data for {}".format(symbol))
