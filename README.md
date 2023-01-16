@@ -22,10 +22,10 @@ STONK_BOT_TOKEN="{your token goes here}"
 
 Now you can run the bot using the following command
 ```
-> python3 discord_bot.py
+> python3 main.py
 ```
 
 ## Screen recording
-Below is how the bot should behave like this:
-https://user-images.githubusercontent.com/74216448/212521797-4a0b0fd9-df1e-414a-bb37-f6e09fe2a5e2.mov
+Below is how the bot should behave:
 
+https://user-images.githubusercontent.com/74216448/212582466-0ac7b78a-0e33-4cab-932a-b4aa5a50cac8.mov
