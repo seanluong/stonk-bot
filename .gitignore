@@ -1,3 +1,9 @@
+bin
+lib
+
+.breakpoints
+
+
 __pycache__
 
 .config
