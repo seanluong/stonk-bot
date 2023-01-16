@@ -2,7 +2,7 @@
 Bot to fetch stock price.
 
 
-## Instulation guide
+## Installation guide
 
 First, clone the code in this repo to your local machine and install all the needed requirements.
 
