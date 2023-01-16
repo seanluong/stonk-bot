@@ -1,10 +1,12 @@
 import os
 import discord
 
+from dotenv import load_dotenv
 from message_parser import parse_message_content
 import stonk
 
-stonk_bot_token = os.environ['STONK_BOT_TOKEN']
+load_dotenv()
+stonk_bot_token = os.getenv('STONK_BOT_TOKEN')
 
 intents = discord.Intents.default()
 intents.message_content = True

@@ -3,6 +3,7 @@ lib
 
 .breakpoints
 
+.env
 
 __pycache__
 
