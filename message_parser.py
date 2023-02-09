@@ -7,4 +7,4 @@ def parse_message_content(content):
   if len(rest) == 0:
     return True, None
 
-  return True, rest.split()[0]
+  return True, rest.split()[0].upper()
