@@ -11,9 +11,20 @@ HELP_CONTENT = """
   - $stonk AAPL: show the latest stock price of AAPL
 """
 
+# Users are used to the format XXX-USD for crypto (e.g. BTC-USD)
+# so we just check if the symbol contains a hyphen.
+def _is_crypto(symbol):
+  return '-' in symbol
+
 def use_polygon(client, symbol):
+  polygon_symbol = symbol
+  if _is_crypto(symbol):
+    parts = symbol.split('-')
+    crypto, currency = parts[0], parts[1]
+    polygon_symbol = "X:{}{}".format(crypto, currency)
+
   try:
-    price, growth, name = poly.fetch_stock_price_data(client, symbol)
+    price, growth, name = poly.fetch_stock_price_data(client, polygon_symbol)
   except Exception as error:
     print("Failed to fetch data from Polygon {}".format(error))
     return None, False
@@ -36,12 +47,12 @@ async def handle_stonk(stockApiClient, symbol, message):
     await message.reply("Ticker symbol cannot be empty")
     return
 
-  results, success = use_polygon(stockApiClient, symbol)
+  results, success = use_yahoo(symbol)
   if success:
     await reply(message, results, symbol)
     return
 
-  results, success = use_yahoo(symbol)
+  results, success = use_polygon(stockApiClient, symbol)
   if success:
     await reply(message, results, symbol)
     return
