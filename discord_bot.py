@@ -1,17 +1,21 @@
 import os
 import discord
-
+from polygon import RESTClient
 from dotenv import load_dotenv
 from message_parser import parse_message_content
 import stonk
 
 load_dotenv()
-stonk_bot_token = os.getenv('STONK_BOT_TOKEN')
 
+# initialize Discord API client
+stonk_bot_token = os.getenv('STONK_BOT_TOKEN')
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
+# initialize Polygon API client
+polygon_api_key = os.getenv('POLYGON_API_KEY')
+polygonClient = RESTClient(api_key=polygon_api_key)
 
 @client.event
 async def on_ready():
@@ -38,4 +42,4 @@ async def on_message(message):
   if symbol == "$help":
     await stonk.handle_help(message)
   else:
-    await stonk.handle_stonk(symbol, message)
+    await stonk.handle_stonk(polygonClient, symbol, message)
